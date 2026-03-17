@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyTrucksure - Insurance SaaS Solution</title>
+<meta name="description" content="MyTrucksure is a purpose built SaaS app for the trucking insurance market. Technology platform for insurance Carriers, MGA's, Brokers and InsureTech's.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" onclick="navigateTo('home')">
+      <img src="images/official_logo.png" alt="MyTrucksure Logo">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a class="nav-link active" onclick="navigateTo('home')" data-page="home">Home</a>
+      <div class="nav-dropdown">
+        <a class="nav-link" data-page="partners">Partners</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" onclick="navigateTo('partners','partnerships')">Partnerships</a>
+          <a class="dropdown-item" onclick="navigateTo('partners','integrations')">Integrations</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a class="nav-link" data-page="solutions">Solutions</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" onclick="navigateTo('solutions','underwriting')">Underwriting</a>
+          <a class="dropdown-item" onclick="navigateTo('solutions','policyadmin')">Policy Admin</a>
+          <a class="dropdown-item" onclick="navigateTo('solutions','billing')">Billing &amp; Payments</a>
+        </div>
+      </div>
+      <a class="nav-link" onclick="navigateTo('events')" data-page="events">Events</a>
+      <a class="nav-link nav-cta" onclick="navigateTo('contact')" data-page="contact">Contact Us</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════ HOME PAGE ═══════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- Hero — Full-screen truck background -->
+  <section class="hero" id="hero-section">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge"><span class="hero-badge-dot"></span> Insurance SaaS Platform</div>
+        <h1>MyTrucksure<br><em>make insurance easy</em></h1>
+        <p class="hero-sub">The MyTrucksure is a purpose built SaaS app for the trucking insurance market. It is a technology platform for insurance Carriers, MGA's, Brokers and InsureTech's as well as Lloyd's syndicates and Risk Retention Groups. Whether your organization is large or small, it is for anyone who is looking to sell and service insurance to the highly specialized U.S. trucking industry.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" onclick="navigateTo('contact')">Get a Demo →</a>
+          <a class="btn btn-outline" onclick="navigateTo('solutions')">Explore Solutions</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-label">Scroll</div>
+      <span class="hero-scroll-arrow"></span>
+    </div>
+  </section>
+  </div>
+
+  <!-- Benefits -->
+  <section class="benefits-section section-pad">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Why MyTrucksure</span>
+        <h2 class="section-title">The Benefits of MyTrucksure SaaS</h2>
+        <p class="section-desc">Cost effective, digital enablement that will drive business growth, operational efficiency and better customer service.</p>
+      </div>
+      <div class="benefits-carousel reveal" id="benefitsCarousel">
+        <div class="carousel-nav prev" onclick="carouselNav(-1)">‹</div>
+        <div class="carousel-nav next" onclick="carouselNav(1)">›</div>
+        <div class="benefits-carousel-track">
+          <div class="benefits-slide active">
+            <h3>Increase Quotation &amp; Binding</h3>
+            <p>Increase quotation response rate and increase binding through streamlined digital workflows.</p>
+          </div>
+          <div class="benefits-slide">
+            <h3>Eliminate Manual Processes</h3>
+            <p>Eliminate manual processes and spreadsheets with automated, intelligent underwriting tools.</p>
+          </div>
+          <div class="benefits-slide">
+            <h3>Easy Data Access</h3>
+            <p>Easy access to all your underwriting and customer data in one centralized platform.</p>
+          </div>
+          <div class="benefits-slide">
+            <h3>Premium Finance Integration</h3>
+            <p>Automated premium finance integration for seamless payment workflows.</p>
+          </div>
+          <div class="benefits-slide">
+            <h3>API Connectivity</h3>
+            <p>Connect to the broader trucking digital ecosystem through easily enabled API connectivity.</p>
+          </div>
+        </div>
+        <div class="carousel-dots" id="carouselDots">
+          <span class="carousel-dot active" onclick="carouselGo(0)"></span>
+          <span class="carousel-dot" onclick="carouselGo(1)"></span>
+          <span class="carousel-dot" onclick="carouselGo(2)"></span>
+          <span class="carousel-dot" onclick="carouselGo(3)"></span>
+          <span class="carousel-dot" onclick="carouselGo(4)"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage -->
+  <section class="coverage-section section-pad">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Products &amp; Coverages</span>
+        <h2 class="section-title">Key Trucking Products Supported</h2>
+        <p class="section-desc">Rapid go live for key trucking products and coverages, sold either mono-line or as a custom configured package.</p>
+      </div>
+      <div class="coverage-grid">
+        <div class="coverage-card reveal"><span class="coverage-icon">🚛</span><div><h3>Auto Liability</h3><p>Commercial auto liability coverage for trucking operations</p></div></div>
+        <div class="coverage-card reveal"><span class="coverage-icon">🛡️</span><div><h3>Truck &amp; Trailer Physical Damage</h3><p>Comprehensive physical damage protection for trucks and trailers</p></div></div>
+        <div class="coverage-card reveal"><span class="coverage-icon">🔄</span><div><h3>Non-Trucking Liability / Bob-Tail</h3><p>Coverage for owner-operators when not under dispatch</p></div></div>
+        <div class="coverage-card reveal"><span class="coverage-icon">🤝</span><div><h3>Trailer Interchange</h3><p>Protection for trailers in interchange agreements</p></div></div>
+        <div class="coverage-card reveal"><span class="coverage-icon">📦</span><div><h3>Cargo</h3><p>Freight and cargo insurance coverage</p></div></div>
+        <div class="coverage-card reveal"><span class="coverage-icon">🏢</span><div><h3>General Liability</h3><p>Broad-form general liability for trucking businesses</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Description -->
+  <section class="platform-section section-pad">
+    <div class="container">
+      <div class="platform-box reveal">
+        <h2><span>MyTrucksure</span> supports a fully digital policy life cycle</h2>
+        <p>Including rate, quote, bind, issue endorsements, renewal and cancellation and out of the box the collection of specific trucking data including owner-operator, carrier, fleet and driver information. The app is connected to a growing ecosystem of trucking specific third party data and services specific to needs of selling and truck insurance including MVR retrieval, state auto liability insurance reporting and premium finance. <strong>MyTrucksure</strong> powered by InsureMO® is based on latest micro-service, REST API, cloud native technology architecture. It is hosted in the U.S. on Amazon Web Services and is cost effective.</p>
+        <div class="platform-tech-tags">
+          <span class="tech-tag">Micro-Service</span>
+          <span class="tech-tag">REST API</span>
+          <span class="tech-tag">Cloud Native</span>
+          <span class="tech-tag">AWS Hosted</span>
+          <span class="tech-tag">InsureMO®</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Strip -->
+  <section class="contact-strip section-pad">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Get in Touch</span>
+        <h2 class="section-title">Please contact us for an<br>introduction discussion and demo.</h2>
+      </div>
+      <div class="contact-cards">
+        <div class="contact-person reveal">
+          <h3>Martin Crew</h3>
+          <span class="role">Vice President &amp; General Manager, MyTrucksure</span>
+          <div class="contact-detail">📞 <a href="tel:+17735802168">+1 773 580 2168</a></div>
+          <div class="contact-detail">✉️ <a href="/cdn-cgi/l/email-protection#a0cdc1d2d4c9ce8ec3d2c5d7e0cdd9d4d2d5c3cbd3d5d2c58ec3cfcd"><span class="__cf_email__" data-cfemail="a4c9c5d6d0cdca8ac7d6c1d3e4c9ddd0d6d1c7cfd7d1d6c18ac7cbc9">[email&#160;protected]</span></a></div>
+          <div class="contact-detail">🔗 <a href="https://www.linkedin.com/in/martin-crew-794110b/" target="_blank">LinkedIn</a></div>
+        </div>
+        <div class="contact-person reveal">
+          <h3>Josh Linton</h3>
+          <span class="role">Sales Director, MyTrucksure</span>
+          <div class="contact-detail">📞 <a href="tel:+14127091909">+1 412 709 1909</a></div>
+          <div class="contact-detail">✉️ <a href="/cdn-cgi/l/email-protection#b6dcd9c5dec3d798dadfd8c2d9d8f6dfd8c5c3c4d3dbd998d5d9db"><span class="__cf_email__" data-cfemail="355f5a465d40541b595c5b415a5b755c5b46404750585a1b565a58">[email&#160;protected]</span></a></div>
+          <div class="contact-detail">🔗 <a href="https://www.linkedin.com/in/jtlinton" target="_blank">LinkedIn</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LinkedIn -->
+  <section class="linkedin-section section-pad">
+    <div class="container">
+      <h2 class="reveal">Follow Us!</h2>
+      <p class="reveal">Stay up to date with MyTrucksure by connecting with us on LinkedIn</p>
+      <a class="btn btn-primary reveal" href="https://www.linkedin.com/company/mytrucksure/?viewAsMember=true" target="_blank">Follow on LinkedIn →</a>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ PARTNERS PAGE ═══════════════ -->
+<div class="page" id="page-partners">
+  <section class="partners-hero">
+    <div class="container">
+      <h1>Our Trusted Partners</h1>
+      <p>Bringing you efficiency with smart, seamless integrations</p>
+    </div>
+  </section>
+  <p class="partners-intro reveal">It is our mission to make trucking insurance simple, effective, and more productive for you and your customers. Through each of our trusted partnerships, we work to bring you the best-in-class solutions tailored to your business. Explore our partnerships and integrations below.</p>
+
+  <section class="section-pad" id="partnerships">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Partnerships</span>
+        <h2 class="section-title">Technology Partners</h2>
+      </div>
+      <div class="partners-grid">
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/519616_305359.png" alt="Carrier Software"></div>
+          <h3>Carrier Software</h3>
+          <span class="partner-tag">AI Solutions: Underwriting, ELDs &amp; Loss Runs</span>
+          <p>Carrier Software is a leading InsurTech provider transforming commercial auto underwriting. Our unified platform combines FMCSA safety data, ELD telematics, proprietary peer benchmarking, and AI-driven loss run analysis to deliver a clear, 360-degree view of carrier risk. We turn complex data into actionable insights that help underwriters price with precision, agents maximize premiums, and carriers improve loss ratios.</p>
+          <a class="partner-link" href="https://www.carriersoftware.com/" target="_blank">Visit Website →</a>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/511256_246371.png" alt="IPFS"></div>
+          <h3>IPFS</h3>
+          <span class="partner-tag">Premium Financing Solutions</span>
+          <p>IPFS offers flexible premium financing solutions that help businesses manage cashflow by spreading insurance payments over time. With advanced technology and personalized service, IPFS simplifies the payment process for agents, brokers, and more.</p>
+          <a class="partner-link" href="https://www.ipfs.com/" target="_blank">Visit Website →</a>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/235849_757392.png" alt="Sambasafety"></div>
+          <h3>Sambasafety</h3>
+          <span class="partner-tag">Risk Insight and Mitigation</span>
+          <p>Sambasafety provides a data-driven platform that helps companies monitor and manage driver risk through motor vehicle record checks, telematics, and compliance tools.</p>
+          <a class="partner-link" href="https://sambasafety.com/" target="_blank">Visit Website →</a>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/172036_851908.png" alt="First Insurance Funding"></div>
+          <h3>First Insurance Funding</h3>
+          <span class="partner-tag">Premium Finance</span>
+          <p>First Insurance Funding provides flexible premium financing solutions that simplify insurance payments for businesses and individuals. Trusted service and innovative technology ensure seamless cash flow management and uninterrupted coverage.</p>
+          <a class="partner-link" href="https://www.firstinsurancefunding.com/" target="_blank">Visit Website →</a>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/522593_948394.png" alt="TruckerCloud"></div>
+          <h3>TruckerCloud</h3>
+          <span class="partner-tag">Telematics Aggregator</span>
+          <p>TruckerCloud is a telematics solution for fleet insurance that lowers your loss ratio using telematics insights. TruckerCloud is compatible with more than 90% of commercial vehicles and offers integrations with 50+ ELDs and cameras.</p>
+          <a class="partner-link" href="https://truckercloud.com/" target="_blank">Visit Website →</a>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/481574_616318.png" alt="Anddone"></div>
+          <h3>Anddone</h3>
+          <span class="partner-tag">Payment Processing Solution</span>
+          <p>Anddone offers customizable payment solutions built for the insurance industry. Our flexible platform enables you to manage payments effortlessly, providing your customers with a seamless and straightforward way to pay.</p>
+          <a class="partner-link" href="https://www.anddone.com/" target="_blank">Visit Website →</a>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/596271_587676.png" alt="Nexar"></div>
+          <h3>Nexar</h3>
+          <span class="partner-tag">AI Powered Dashcams</span>
+          <p>Nexar Fleets combines AI‑powered dash cams, live GPS tracking, geofencing and remote livestreaming to give fleet managers real‑time visibility into vehicle locations, driver behavior, and critical roadway events like hard braking and collisions.</p>
+          <a class="partner-link" href="https://www.getnexar.com/" target="_blank">Visit Website →</a>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/521825_466727.png" alt="Velos"></div>
+          <h3>Velos</h3>
+          <span class="partner-tag">Underwriting Submission and Claims Automation</span>
+          <p>Velos uses AI-powered "workers" to process underwriting submissions with precision and speed, eliminating manual entry, reducing errors, and accelerating your quote‑to‑bind cycle. Beyond underwriting, our platform scales to automate complex back‑office workflows across finance, claims, and more.</p>
+          <a class="partner-link" href="https://tryvelos.com/" target="_blank">Visit Website →</a>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/674760_336178.png" alt="Loss Scan AI by Deep Vector"></div>
+          <h3>Loss Scan AI — Powered by Deep Vector</h3>
+          <span class="partner-tag">Data Extraction Solution</span>
+          <p>Deep Vector delivers cutting-edge AI solutions that combine deep learning and vector search to power real-time, context-aware recommendations and predictions. The platform helps businesses harness unstructured data for smarter automation, faster decisions, and better user experiences.</p>
+          <a class="partner-link" href="https://www.deepvector.com/" target="_blank">Visit Website →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="integrations" style="background: var(--slate-50);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Integrations</span>
+        <h2 class="section-title">Seamlessly Built Into Our Platform</h2>
+      </div>
+      <div class="partners-grid">
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/225223_677498.png" alt="Hubspot"></div>
+          <h3>Hubspot</h3>
+          <span class="partner-tag">CRM</span>
+          <p>HubSpot's all-in-one CRM platform helps you attract leads, close deals, and grow better without the hassle of juggling multiple tools. Streamline your marketing, sales, and customer service with powerful automation and real-time insights.</p>
+          <a class="partner-link" href="https://www.hubspot.com/" target="_blank">Visit Website →</a>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/110619_520074.png" alt="IVANS"></div>
+          <h3>IVANS</h3>
+          <span class="partner-tag">Digital Access to Insured Data</span>
+          <p>IVANS connects insurance carriers, agencies, and MGAs through a digital network that streamlines the distribution and servicing of insurance products. Its platform automates data exchange, improves connectivity, and enhances efficiency across the insurance lifecycle.</p>
+          <a class="partner-link" href="https://www.ivans.com/" target="_blank">Visit Website →</a>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/866684_694129.png" alt="Verisk CV-ALIR"></div>
+          <h3>Verisk CV-ALIR</h3>
+          <span class="partner-tag">Compliance</span>
+          <p>Verisk CV-ALIR streamlines automobile liability insurance reporting by offering a single, standardized data feed for multi-state DMV compliance. Simplify operations, reduce IT burden, and ensure accurate, automated reporting with trusted Verisk technology.</p>
+          <a class="partner-link" href="https://www.verisk.com/" target="_blank">Visit Website →</a>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/343994_861148.png" alt="Docusign"></div>
+          <h3>Docusign</h3>
+          <span class="partner-tag">eSignature and Documents</span>
+          <p>DocuSign makes it easy to securely sign, send, and manage documents anytime, anywhere. With fast, legally binding eSignatures and powerful automation, DocuSign streamlines workflows and keeps your business moving.</p>
+          <a class="partner-link" href="https://www.docusign.com/" target="_blank">Visit Website →</a>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/625689_963393.png" alt="FMCSA"></div>
+          <h3>FMCSA</h3>
+          <span class="partner-tag">Commercial Vehicle Safety</span>
+          <p>FMCSA keeps America's roadways safe by regulating and enforcing safety standards for commercial motor vehicles. Through compliance, licensing, and safety initiatives, FMCSA supports a safer, more efficient trucking and transportation industry.</p>
+          <a class="partner-link" href="https://www.fmcsa.dot.gov/" target="_blank">Visit Website →</a>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-logo-wrap"><img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_1/11157557/571480_75599.png" alt="NHTSA"></div>
+          <h3>NHTSA</h3>
+          <span class="partner-tag">Vehicle and Road Safety</span>
+          <p>NHTSA is dedicated to making America's roads safer by setting and enforcing vehicle safety standards and promoting driver education. Through innovative research and public awareness campaigns, NHTSA helps reduce crashes, save lives, and protect all road users.</p>
+          <a class="partner-link" href="https://www.nhtsa.gov/" target="_blank">Visit Website →</a>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:48px; color: var(--slate-500); font-size: 0.95rem;" class="reveal">Check back frequently to stay up to date on our list of partnerships and integrations!</p>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ SOLUTIONS PAGE ═══════════════ -->
+<div class="page" id="page-solutions">
+  <section class="solutions-hero">
+    <div class="container">
+      <h1>Our Solutions</h1>
+      <p>MyTrucksure offers digital solutions that simplify underwriting, policy administration, billing and payments, and more.</p>
+    </div>
+  </section>
+
+  <div class="solution-block" id="underwriting">
+    <div class="container">
+      <div class="solution-layout reveal">
+        <div class="solution-content">
+          <h2>Underwriting</h2>
+          <p class="solution-subtitle">Digital Underwriting Workbench</p>
+          <ul class="solution-features">
+            <li>Stand alone intelligent underwriting and automation integrated with advanced data and AI capabilities</li>
+            <li>Purpose-built for trucking, fleet, and commercial auto underwriting</li>
+            <li>Compliments any back-office policy administration system</li>
+            <li>Rating options include: Excel Rating-as-a-Service or InsureMO Rating-as-a-Service</li>
+            <li>Increase submission response rates</li>
+            <li>Powered by InsureMO, cloud native, microservice, API first insurance architecture</li>
+          </ul>
+        </div>
+        <div class="solution-visual">
+          <img src="images/Underwriting.png" alt="Underwriting Dashboard">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="solution-block" id="policyadmin">
+    <div class="container">
+      <div class="solution-layout reverse reveal">
+        <div class="solution-content">
+          <h2>Policy Administration</h2>
+          <p class="solution-subtitle">Full Life-Cycle Policy Admin</p>
+          <ul class="solution-features">
+            <li>Intelligent underwriting and automation integrated with advanced data and AI capabilities</li>
+            <li>Full life-cycle policy administration system of record (SOR)</li>
+            <li>Rating options include: Excel Rating-as-a-Service or InsureMO Rating-as-a-Service</li>
+            <li>Rapid cost, effective onboarding</li>
+            <li>Powered by InsureMO, cloud native, microservice, API first insurance architecture</li>
+          </ul>
+        </div>
+        <div class="solution-visual">
+          <img src="images/Policy_Administration.png" alt="Policy Administration">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="solution-block" id="billing">
+    <div class="container">
+      <div class="solution-layout reveal">
+        <div class="solution-content">
+          <h2>Billing and Payments</h2>
+          <p class="solution-subtitle">Integrated billing, collections, and payment opportunities</p>
+          <ul class="solution-features">
+            <li>Fully integrated with MyTrucksure Policy Administration</li>
+            <li>Billing and payment information available at the policy level for underwriters or for back-office billing and payment analysts</li>
+            <li>DirectBill, Agent Bill, and multiple installment plan options, taxes, fees, and miscellaneous fee calculation</li>
+            <li>Secure, real-time and scheduled payment integrations and Premium Finance Integrations</li>
+          </ul>
+        </div>
+        <div class="solution-visual">
+          <img src="images/Billing_and_Payments.png" alt="Billing and Payments">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ EVENTS PAGE ═══════════════ -->
+<div class="page" id="page-events">
+  <section class="events-hero">
+    <div class="container">
+      <h1>Meet Us In Person</h1>
+      <p>Innovation and Connection — at the following 2025 events</p>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container">
+      <div class="events-grid">
+        <div class="event-card reveal" onclick="showEventDetail('itc-vegas')">
+          <div class="event-card-logo"><img src="images/ITC_Vegas.jpeg" alt="ITC Vegas 2025"></div>
+          <div class="event-card-top">
+            <div class="event-date">October 14, 2025</div>
+            <h3>ITC Vegas 2025</h3>
+          </div>
+          <div class="event-card-body">
+            <p>MyTrucksure is proud to support ITC Vegas 2025 as a gold sponsor. ITC Vegas is one of the world's largest insurtech events, bringing together the industry's most innovative minds.</p>
+          </div>
+          <div class="event-card-footer">
+            <span class="event-location">Las Vegas</span>
+            <span class="event-read-more">Read More →</span>
+          </div>
+        </div>
+        <div class="event-card reveal" onclick="showEventDetail('insurtech-chicago')">
+          <div class="event-card-logo"><img src="images/InsurTech_Chicago.png" alt="InsurTech Chicago 2025"></div>
+          <div class="event-card-top">
+            <div class="event-date">September 16, 2025</div>
+            <h3>InsurTech Chicago 2025</h3>
+          </div>
+          <div class="event-card-body">
+            <p>MyTrucksure is excited to attend InsurTech Chicago on September 16th, at HUB International. We look forward to connecting with industry leaders and showcasing our platform.</p>
+          </div>
+          <div class="event-card-footer">
+            <span class="event-location">Chicago</span>
+            <span class="event-read-more">Read More →</span>
+          </div>
+        </div>
+        <div class="event-card reveal" onclick="showEventDetail('mcief')">
+          <div class="event-card-logo"><img src="images/MCIEF.png" alt="MCIEF 2025"></div>
+          <div class="event-card-top">
+            <div class="event-date">April 14, 2025</div>
+            <h3>MCIEF 2025</h3>
+          </div>
+          <div class="event-card-body">
+            <p>MyTrucksure is excited to sponsor and exhibit at the MCIEF 2025 Annual Conference, taking place in the heart of the trucking insurance industry.</p>
+          </div>
+          <div class="event-card-footer">
+            <span class="event-location">Orlando</span>
+            <span class="event-read-more">Read More →</span>
+          </div>
+        </div>
+        <div class="event-card reveal" onclick="showEventDetail('insurtech-ny')">
+          <div class="event-card-logo"><img src="images/InsurTech_NY.webp" alt="InsurTech NY 2025"></div>
+          <div class="event-card-top">
+            <div class="event-date">April 2, 2025</div>
+            <h3>InsurTech NY 2025</h3>
+          </div>
+          <div class="event-card-body">
+            <p>MyTrucksure is thrilled to attend the InsurTech 2025 NY Spring Conference on April 2-3. Come meet our team and discover how we're transforming trucking insurance.</p>
+          </div>
+          <div class="event-card-footer">
+            <span class="event-location">New York</span>
+            <span class="event-read-more">Read More →</span>
+          </div>
+        </div>
+        <div class="event-card reveal" onclick="showEventDetail('atd-show')">
+          <div class="event-card-logo"><img src="images/ATD_show.jpeg" alt="ATD Show"></div>
+          <div class="event-card-top">
+            <div class="event-date">January 23, 2025</div>
+            <h3>ATD Show</h3>
+          </div>
+          <div class="event-card-body">
+            <p>MyTrucksure is excited to attend the ATD Show from January 23-25. Come meet our US team to learn about our innovative trucking insurance SaaS platform.</p>
+          </div>
+          <div class="event-card-footer">
+            <span class="event-location">New Orleans</span>
+            <span class="event-read-more">Read More →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ EVENT DETAIL PAGES ═══════════════ -->
+<div class="page event-detail-page" id="page-event-itc-vegas">
+  <div class="breadcrumb">
+    <div class="container">
+      <div class="breadcrumb-inner">
+        <span class="breadcrumb-link" onclick="navigateTo('home')">Home</span>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-link" onclick="navigateTo('events')">Events</span>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">ITC Vegas 2025</span>
+      </div>
+    </div>
+  </div>
+  <section class="event-detail-hero">
+    <div class="container">
+      <img class="event-detail-logo" src="images/ITC_Vegas.jpeg" alt="ITC Vegas 2025">
+      <h1>ITC Vegas 2025</h1>
+      <div class="event-detail-meta">
+        <span>📅 October 14, 2025</span>
+        <span>📍 Las Vegas</span>
+      </div>
+    </div>
+  </section>
+  <div class="event-detail-body">
+    <div class="event-back-btn" onclick="navigateTo('events')">← Back to Events</div>
+    <p>MyTrucksure is proud to support ITC Vegas 2025 as a gold sponsor. ITC Vegas is one of the world's largest insurtech events, offering unparalleled access to the most comprehensive and global gathering of tech entrepreneurs, investors, and insurance industry incumbents.</p>
+    <p>For more information about this event, please visit <a href="https://vegas.insuretechconnect.com/" target="_blank">https://vegas.insuretechconnect.com/</a></p>
+    <p>Come and visit our booth #<strong>2337</strong> to learn about our specialized app for the trucking insurance market - MyTrucksure™ SaaS.</p>
+    <div class="event-detail-nav">
+      <span class="event-nav-btn disabled">← Previous</span>
+      <span class="event-nav-btn" onclick="showEventDetail('insurtech-chicago')">InsurTech Chicago 2025 →</span>
+    </div>
+  </div>
+</div>
+
+<div class="page event-detail-page" id="page-event-insurtech-chicago">
+  <div class="breadcrumb">
+    <div class="container">
+      <div class="breadcrumb-inner">
+        <span class="breadcrumb-link" onclick="navigateTo('home')">Home</span>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-link" onclick="navigateTo('events')">Events</span>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">InsurTech Chicago 2025</span>
+      </div>
+    </div>
+  </div>
+  <section class="event-detail-hero">
+    <div class="container">
+      <img class="event-detail-logo" src="images/InsurTech_Chicago.png" alt="InsurTech Chicago 2025">
+      <h1>InsurTech Chicago 2025</h1>
+      <div class="event-detail-meta">
+        <span>📅 September 16, 2025</span>
+        <span>📍 Chicago</span>
+      </div>
+    </div>
+  </section>
+  <div class="event-detail-body">
+    <div class="event-back-btn" onclick="navigateTo('events')">← Back to Events</div>
+    <p>MyTrucksure is excited to attend InsurTech Chicago on September 16th, at HUB International. We will be diving into the world of AI in underwriting, and networking with other professionals.</p>
+    <p>For more details, visit <a href="https://www.eventbrite.com/e/going-deeper-winning-with-ai-in-underwriting-tickets-1498571480639" target="_blank">the event page on Eventbrite</a>.</p>
+    <div class="event-detail-nav">
+      <span class="event-nav-btn" onclick="showEventDetail('itc-vegas')">← ITC Vegas 2025</span>
+      <span class="event-nav-btn" onclick="showEventDetail('mcief')">MCIEF 2025 →</span>
+    </div>
+  </div>
+</div>
+
+<div class="page event-detail-page" id="page-event-mcief">
+  <div class="breadcrumb">
+    <div class="container">
+      <div class="breadcrumb-inner">
+        <span class="breadcrumb-link" onclick="navigateTo('home')">Home</span>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-link" onclick="navigateTo('events')">Events</span>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">MCIEF 2025</span>
+      </div>
+    </div>
+  </div>
+  <section class="event-detail-hero">
+    <div class="container">
+      <img class="event-detail-logo" src="images/MCIEF.png" alt="MCIEF 2025">
+      <h1>MCIEF 2025</h1>
+      <div class="event-detail-meta">
+        <span>📅 April 14–17, 2025</span>
+        <span>📍 Orlando</span>
+      </div>
+    </div>
+  </section>
+  <div class="event-detail-body">
+    <div class="event-back-btn" onclick="navigateTo('events')">← Back to Events</div>
+    <p>MyTrucksure is excited to sponsor and exhibit at the MCIEF 2025 Annual Conference, taking place from April 14 to 17.</p>
+    <p>This conference will showcase innovations and provide valuable insights into the transportation insurance industry. It will also offer networking opportunities for leaders, visionaries, and experts within the motor industry.</p>
+    <p>For event registration, please visit: <a href="https://mcief.org/events-2/2025-annual-conference-in-person-orlando/" target="_blank">https://mcief.org/events-2/2025-annual-conference-in-person-orlando/</a></p>
+    <p>We invite you to visit our exhibition table to learn more about our specialized app for the trucking insurance market, MyTrucksure™ SaaS.</p>
+    <div class="event-detail-nav">
+      <span class="event-nav-btn" onclick="showEventDetail('insurtech-chicago')">← InsurTech Chicago 2025</span>
+      <span class="event-nav-btn" onclick="showEventDetail('insurtech-ny')">InsurTech NY 2025 →</span>
+    </div>
+  </div>
+</div>
+
+<div class="page event-detail-page" id="page-event-insurtech-ny">
+  <div class="breadcrumb">
+    <div class="container">
+      <div class="breadcrumb-inner">
+        <span class="breadcrumb-link" onclick="navigateTo('home')">Home</span>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-link" onclick="navigateTo('events')">Events</span>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">InsurTech NY 2025</span>
+      </div>
+    </div>
+  </div>
+  <section class="event-detail-hero">
+    <div class="container">
+      <img class="event-detail-logo" src="images/InsurTech_NY.webp" alt="InsurTech NY 2025">
+      <h1>InsurTech NY 2025</h1>
+      <div class="event-detail-meta">
+        <span>📅 April 2–3, 2025</span>
+        <span>📍 New York</span>
+      </div>
+    </div>
+  </section>
+  <div class="event-detail-body">
+    <div class="event-back-btn" onclick="navigateTo('events')">← Back to Events</div>
+    <p>MyTrucksure is thrilled to attend the InsurTech 2025 NY Spring Conference on April 2-3.</p>
+    <p>Come meet our U.S. team to learn about MyTrucksure™ SaaS, our specialized app for the trucking insurance market.</p>
+    <div class="event-detail-nav">
+      <span class="event-nav-btn" onclick="showEventDetail('mcief')">← MCIEF 2025</span>
+      <span class="event-nav-btn" onclick="showEventDetail('atd-show')">ATD Show →</span>
+    </div>
+  </div>
+</div>
+
+<div class="page event-detail-page" id="page-event-atd-show">
+  <div class="breadcrumb">
+    <div class="container">
+      <div class="breadcrumb-inner">
+        <span class="breadcrumb-link" onclick="navigateTo('home')">Home</span>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-link" onclick="navigateTo('events')">Events</span>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">ATD Show</span>
+      </div>
+    </div>
+  </div>
+  <section class="event-detail-hero">
+    <div class="container">
+      <img class="event-detail-logo" src="images/ATD_show.jpeg" alt="ATD Show">
+      <h1>ATD Show</h1>
+      <div class="event-detail-meta">
+        <span>📅 January 23–25, 2025</span>
+        <span>📍 New Orleans</span>
+      </div>
+    </div>
+  </section>
+  <div class="event-detail-body">
+    <div class="event-back-btn" onclick="navigateTo('events')">← Back to Events</div>
+    <p>MyTrucksure is excited to attend the ATD Show from January 23-25.</p>
+    <p>Come meet our US team to learn about MyTrucksure™ SaaS, our specialized app for the trucking insurance market.</p>
+    <div class="event-detail-nav">
+      <span class="event-nav-btn" onclick="showEventDetail('insurtech-ny')">← InsurTech NY 2025</span>
+      <span class="event-nav-btn disabled">Next →</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ CONTACT PAGE ═══════════════ -->
+<div class="page" id="page-contact">
+  <section class="contact-hero">
+    <div class="container">
+      <h1>Speak to Us Today!</h1>
+      <p>Fill out this short form or email us at <a href="/cdn-cgi/l/email-protection#1a73747c755a77636e686f7971696f687f34797577"><span class="__cf_email__" data-cfemail="93fafdf5fcd3feeae7e1e6f0f8e0e6e1f6bdf0fcfe">[email&#160;protected]</span></a></p>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container">
+      <div class="contact-page-layout">
+        <div class="contact-form-wrap reveal">
+          <h2>Send Us a Message</h2>
+          <p class="form-desc">A field marked with * indicates that the information is required.</p>
+          <div class="form-group">
+            <label class="form-label">Full Name *</label>
+            <input type="text" class="form-input" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email *</label>
+            <input type="email" class="form-input" placeholder="you@company.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Company</label>
+            <input type="text" class="form-input" placeholder="Your company name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone</label>
+            <input type="tel" class="form-input" placeholder="+1 (555) 000-0000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message *</label>
+            <textarea class="form-textarea" placeholder="Tell us about your needs..."></textarea>
+          </div>
+          <button class="form-submit" onclick="alert('Thank you! Your message has been received. We will get ba"mailto:martin.crew@mytrucksure.com"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b7dad6c5c3ded999d4c5d2c0f7dacec3c5c2d4dcc4c2c5d299d4d8da">[email&#160;protected]</a></a></div>
+            <div class="contact-detail">🔗 <a href="https://www.linkedin.com/in/martin-crew-794110b/" target="_blank">LinkedIn</a></div>
+          </div>
+          <div class="contact-person reveal">
+            <h3>Josh Linton</h3>
+            <span class="role">Sales Director</span>
+            <div class="contact-detail">📞 <a href="tel:+14127091909">+1 412 709 1909</a></div>
+            <div class="contact-detail">✉️ <a href="/cdn-cgi/l/email-protection#1973766a716c78377570776d76775970776a6c6b7c7476377a7674"><span class="__cf_email__" data-cfemail="22484d514a57430c4e4b4c564d4c624b4c515750474f4d0c414d4f">[email&#160;protected]</span></a></div>
+            <div class="contact-detail">🔗 <a href="https://www.linkedin.com/in/jtlinton" target="_blank">LinkedIn</a></div>
+          </div>
+          <div style="margin-top: 32px;">
+            <h3>Follow Us</h3>
+            <p style="color: var(--slate-500); font-size: 0.92rem; margin: 8px 0 16px;">Connect with us on LinkedIn</p>
+            <a class="btn btn-dark" href="https://www.linkedin.com/company/mytrucksure/?viewAsMember=true" target="_blank">Follow on LinkedIn →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ FOOTER — with InsureMO link ═══════════════ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p class="footer-text">Copyright &copy; 2025 MyTrucksure. All rights reserved.</p>
+      <div class="footer-powered">
+        <span>Powered by</span>
+        <a href="https://insuremo.com/en/" target="_blank">InsureMO®</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
