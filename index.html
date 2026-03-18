@@ -16,7 +16,7 @@
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a class="nav-logo" href="index.html">
-      <img src="images/official_logo.png" alt="MyTrucksure Logo">
+      <img src="images/MyTrucksure_logo.png" alt="MyTrucksure Logo">
     </a>
     <div class="nav-links" id="navLinks">
       <a class="nav-link active" href="index.html" data-page="home">Home</a>
@@ -75,38 +75,203 @@
       <p class="section-desc">Cost effective, digital enablement that will drive business growth, operational efficiency and better customer service.</p>
     </div>
     <div class="benefits-carousel reveal" id="benefitsCarousel">
-      <div class="carousel-nav prev" onclick="carouselNav(-1)">‹</div>
-      <div class="carousel-nav next" onclick="carouselNav(1)">›</div>
-      <div class="benefits-carousel-track">
-        <div class="benefits-slide active">
-          <h3>Increase Quotation &amp; Binding</h3>
-          <p>Increase quotation response rate and increase binding through streamlined digital workflows.</p>
-        </div>
-        <div class="benefits-slide">
-          <h3>Eliminate Manual Processes</h3>
-          <p>Eliminate manual processes and spreadsheets with automated, intelligent underwriting tools.</p>
-        </div>
-        <div class="benefits-slide">
-          <h3>Easy Data Access</h3>
-          <p>Easy access to all your underwriting and customer data in one centralized platform.</p>
-        </div>
-        <div class="benefits-slide">
-          <h3>Premium Finance Integration</h3>
-          <p>Automated premium finance integration for seamless payment workflows.</p>
-        </div>
-        <div class="benefits-slide">
-          <h3>API Connectivity</h3>
-          <p>Connect to the broader trucking digital ecosystem through easily enabled API connectivity.</p>
+      <div class="carousel-nav prev" id="carouselPrev">‹</div>
+      <div class="carousel-nav next" id="carouselNext">›</div>
+      <!-- Fixed-height viewport — prevents layout shifts -->
+      <div class="benefits-carousel-viewport" id="carouselViewport">
+        <div class="benefits-carousel-track" id="carouselTrack">
+          <div class="benefits-slide">
+            <h3>Increase Quotation &amp; Binding</h3>
+            <p>Increase quotation response rate and increase binding through streamlined digital workflows.</p>
+          </div>
+          <div class="benefits-slide">
+            <h3>Eliminate Manual Processes</h3>
+            <p>Eliminate manual processes and spreadsheets with automated, intelligent underwriting tools.</p>
+          </div>
+          <div class="benefits-slide">
+            <h3>Easy Data Access</h3>
+            <p>Easy access to all your underwriting and customer data in one centralized platform.</p>
+          </div>
+          <div class="benefits-slide">
+            <h3>Premium Finance Integration</h3>
+            <p>Automated premium finance integration for seamless payment workflows.</p>
+          </div>
+          <div class="benefits-slide">
+            <h3>API Connectivity</h3>
+            <p>Connect to the broader trucking digital ecosystem through easily enabled API connectivity.</p>
+          </div>
         </div>
       </div>
-      <div class="carousel-dots" id="carouselDots">
-        <span class="carousel-dot active" onclick="carouselGo(0)"></span>
-        <span class="carousel-dot" onclick="carouselGo(1)"></span>
-        <span class="carousel-dot" onclick="carouselGo(2)"></span>
-        <span class="carousel-dot" onclick="carouselGo(3)"></span>
-        <span class="carousel-dot" onclick="carouselGo(4)"></span>
-      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
     </div>
+
+    <!-- Inline carousel styles & script (self-contained fix) -->
+    <style>
+      .benefits-carousel {
+        position: relative;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 0 50px; /* room for arrows */
+        user-select: none;
+      }
+      .benefits-carousel-viewport {
+        overflow: hidden;
+        position: relative;
+        /* Fixed height prevents layout reflow when slides change */
+        height: 160px;
+        cursor: grab;
+      }
+      .benefits-carousel-viewport.dragging { cursor: grabbing; }
+      .benefits-carousel-track {
+        display: flex;
+        transition: transform 0.45s cubic-bezier(.4,0,.2,1);
+        height: 100%;
+        will-change: transform;
+      }
+      .benefits-carousel-track.no-transition { transition: none; }
+      .benefits-slide {
+        min-width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px 30px;
+        height: 100%;
+      }
+      .benefits-slide h3 { margin: 0 0 12px; }
+      .benefits-slide p  { margin: 0; }
+
+      /* Arrows — absolutely positioned, vertically centered, never move */
+      .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: background .2s;
+      }
+      .carousel-nav.prev { left: 0; }
+      .carousel-nav.next { right: 0; }
+
+      /* Dots — fixed position below viewport */
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .carousel-dot {
+        width: 10px; height: 10px;
+        border-radius: 50%;
+        background: rgba(128,128,128,.35);
+        cursor: pointer;
+        transition: background .25s, transform .25s;
+      }
+      .carousel-dot.active {
+        background: var(--accent, #3b82f6);
+        transform: scale(1.25);
+      }
+    </style>
+    <script>
+    (function(){
+      var track = document.getElementById('carouselTrack');
+      var viewport = document.getElementById('carouselViewport');
+      var dotsWrap = document.getElementById('carouselDots');
+      var slides = track.querySelectorAll('.benefits-slide');
+      var total = slides.length;
+      var idx = 0;
+      var autoDelay = 2000; // 2 seconds
+      var timer = null;
+
+      /* Build dots */
+      for(var i=0;i<total;i++){
+        var d = document.createElement('span');
+        d.className = 'carousel-dot' + (i===0?' active':'');
+        d.setAttribute('data-i', i);
+        dotsWrap.appendChild(d);
+      }
+      var dots = dotsWrap.querySelectorAll('.carousel-dot');
+
+      function goTo(n, animate){
+        if(animate===undefined) animate=true;
+        idx = ((n % total) + total) % total;
+        if(!animate) track.classList.add('no-transition');
+        track.style.transform = 'translateX(-' + (idx*100) + '%)';
+        if(!animate) { track.offsetHeight; track.classList.remove('no-transition'); }
+        for(var j=0;j<dots.length;j++) dots[j].classList.toggle('active', j===idx);
+      }
+
+      function next(){ goTo(idx+1); }
+      function prev(){ goTo(idx-1); }
+
+      /* Auto-play */
+      function startAuto(){ stopAuto(); timer = setInterval(next, autoDelay); }
+      function stopAuto(){ if(timer){ clearInterval(timer); timer=null; } }
+      startAuto();
+
+      /* Arrows */
+      document.getElementById('carouselPrev').addEventListener('click', function(){ stopAuto(); prev(); startAuto(); });
+      document.getElementById('carouselNext').addEventListener('click', function(){ stopAuto(); next(); startAuto(); });
+
+      /* Dots */
+      dotsWrap.addEventListener('click', function(e){
+        var t = e.target;
+        if(t.classList.contains('carousel-dot')){
+          stopAuto(); goTo(+t.getAttribute('data-i')); startAuto();
+        }
+      });
+
+      /* Drag / Swipe */
+      var startX=0, moveX=0, dragging=false, threshold=40;
+
+      function pointerDown(e){
+        dragging = true;
+        startX = (e.touches ? e.touches[0] : e).clientX;
+        moveX = 0;
+        track.classList.add('no-transition');
+        viewport.classList.add('dragging');
+        stopAuto();
+      }
+      function pointerMove(e){
+        if(!dragging) return;
+        var cx = (e.touches ? e.touches[0] : e).clientX;
+        moveX = cx - startX;
+        var base = -(idx * 100);
+        var pct = (moveX / viewport.offsetWidth) * 100;
+        track.style.transform = 'translateX(' + (base + pct) + '%)';
+      }
+      function pointerUp(){
+        if(!dragging) return;
+        dragging = false;
+        track.classList.remove('no-transition');
+        viewport.classList.remove('dragging');
+        if(moveX < -threshold) next();
+        else if(moveX > threshold) prev();
+        else goTo(idx);
+        startAuto();
+      }
+
+      viewport.addEventListener('mousedown', pointerDown);
+      viewport.addEventListener('mousemove', pointerMove);
+      document.addEventListener('mouseup', pointerUp);
+      viewport.addEventListener('touchstart', pointerDown, {passive:true});
+      viewport.addEventListener('touchmove', pointerMove, {passive:true});
+      viewport.addEventListener('touchend', pointerUp);
+
+      /* Pause on hover */
+      viewport.addEventListener('mouseenter', stopAuto);
+      viewport.addEventListener('mouseleave', startAuto);
+    })();
+    </script>
   </div>
 </section>
 
@@ -158,14 +323,14 @@
         <h3>Martin Crew</h3>
         <span class="role">Vice President &amp; General Manager, MyTrucksure</span>
         <div class="contact-detail">📞 <a href="tel:+17735802168">+1 773 580 2168</a></div>
-        <div class="contact-detail">✉️ <a href="mailto:martin.crew@mytrucksure.com">martin.crew@mytrucksure.com</a></div>
+        <div class="contact-detail">✉️ <a href="/cdn-cgi/l/email-protection#127f7360667b7c3c71607765527f6b6660677179616760773c717d7f"><span class="__cf_email__" data-cfemail="b8d5d9caccd1d696dbcaddcff8d5c1cccacddbd3cbcdcadd96dbd7d5">[email&#160;protected]</span></a></div>
         <div class="contact-detail">🔗 <a href="https://www.linkedin.com/in/martin-crew-794110b/" target="_blank">LinkedIn</a></div>
       </div>
       <div class="contact-person reveal">
         <h3>Josh Linton</h3>
         <span class="role">Sales Director, MyTrucksure</span>
         <div class="contact-detail">📞 <a href="tel:+14127091909">+1 412 709 1909</a></div>
-        <div class="contact-detail">✉️ <a href="mailto:josh.linton@mytrucksure.com">josh.linton@mytrucksure.com</a></div>
+        <div class="contact-detail">✉️ <a href="/cdn-cgi/l/email-protection#315b5e42591f5d585f455e5f715c48454344525a424443541f525e5c"><span class="__cf_email__" data-cfemail="274d48544f094b4e49534849674a5e535552444c545255420944484a">[email&#160;protected]</span></a></div>
         <div class="contact-detail">🔗 <a href="https://www.linkedin.com/in/jtlinton" target="_blank">LinkedIn</a></div>
       </div>
     </div>
@@ -185,15 +350,4 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-inner">
-      <p class="footer-text">Copyright &copy; 2025 MyTrucksure. All rights reserved.</p>
-      <div class="footer-powered">
-        <span>Powered by</span>
-        <a href="https://insuremo.com/en/" target="_blank">InsureMO®</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="js/script.js"></script>
-</body>
-</html>
+      <p class="footer-te
