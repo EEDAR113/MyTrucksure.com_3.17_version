@@ -118,24 +118,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// ── Benefits carousel (home page only) ──
-let currentSlide = 0;
-function carouselGo(n) {
-  const slides = document.querySelectorAll('.benefits-slide');
-  const dots = document.querySelectorAll('.carousel-dot');
-  if (!slides.length) return;
-  slides[currentSlide].classList.remove('active');
-  dots[currentSlide].classList.remove('active');
-  currentSlide = n;
-  slides[currentSlide].classList.add('active');
-  dots[currentSlide].classList.add('active');
-}
-
-function carouselNav(direction) {
-  const slides = document.querySelectorAll('.benefits-slide');
-  if (!slides.length) return;
-  let next = currentSlide + direction;
-  if (next < 0) next = slides.length - 1;
-  if (next >= slides.length) next = 0;
-  carouselGo(next);
-}
+// ── Benefits carousel is handled by inline script in index.html ──
+// (self-contained: auto-rotate, drag/swipe, arrows, dots)
